@@ -1,4 +1,4 @@
-def gc_cont(sequence: str) -> float:
+def gc_calculate(sequence: str) -> float:
     content = 0
     for nucleotide in range(len(sequence)):
         if sequence[nucleotide] in {"C", "G", "c", "g"}:
@@ -15,19 +15,16 @@ def qc_calc(sequence: str) -> float:
 
 
 def is_ingc_bounds(sequence: str, gc_bounds: tuple) -> bool:
-    if len(str(gc_bounds)) == 1:
+    if type((gc_bounds)) is int:
         gc_bounds = (0, gc_bounds)
-    if gc_bounds[0] <= gc_cont(sequence) <= gc_bounds[1]:
-        return True
+    return gc_bounds[0] <= gc_calculate(sequence) <= gc_bounds[1]
 
 
 def is_seq_len(sequence: str, length_bounds: tuple) -> bool:
-    if len(str(length_bounds)) == 1:
+    if type((length_bounds)) is int:
         length_bounds = (0, length_bounds)
-    if length_bounds[0] <= len(sequence) <= length_bounds[1]:
-        return True
+    return length_bounds[0] <= len(sequence) <= length_bounds[1]
 
 
 def is_qual_trs(sequence: str, quality_threshold: int) -> bool:
-    if quality_threshold < qc_calc(sequence):
-        return True
+    return quality_threshold < qc_calc(sequence)

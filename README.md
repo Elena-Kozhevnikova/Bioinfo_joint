@@ -1,24 +1,37 @@
-# Домашняя работа №4
-### Пайплайн bioinfo_joint для обработки последовательностей РНК и ДНК 
+# HW №5
+### bioinfo_joint represents a functional pipeline to manipilate DNA nad RNA sequences, and filters FASTA files and return filtered data as new files. 
 
 
 Пайплайн содержит биоинформатические утилиты, которые позволяют транслировать, транскрибировать, обращать и обратно транскрибировать последовательности ДНК, а также фильтровать наборы последовательностей ДНК по GC-составу, качеству прочтений и длине.
 
-## Возможности проекта
+## Project offers
 
-1. Основной скрипт bioinfo_joint содержит утрилиту для проведения операций над ДНК и РНК. Утилита принимает на вход строки, состоящие из последовательности аминокислот, содержащие в последней позиции команду-операцию, которую необходимо применить к последовательностям нуклеиновых кислот. Операции включают `translate` (трансляция), `transcribe` (транскрипция), `complement` (комплементарная последовательность), `reverse_complement` (обратная комплементарная последовательность). В ответ на ввод последовательностей, не соотвествующих ДНК или РНК, выводится 0.
+1. The main script bioinfo_joint contains a utility for performing operations on DNA and RNA. The utility accepts as input a sequence consisting of a sequence of amino acids, containing in the last position a command-operation that must be sequentially applied to nucleic acids. Operations include `translation` (translation), `transcription` (transcription), `complementation` (complementary sequence), `reverse complement` (reverse complementary sequence). In response to constant actions not related to DNA or RNA, 0 is output. :exclamation: `run_dna_rna_tools` is functional, but currently under improvement. I am working on it given your feedback! :exclamation:
 
-2. Также основной скрипт bioinfo_joint содержит утрилиту для отбора последовательностей из словаря по длине, CG-составу и качеству прочтений. На вход следует подавать словарь с последовательностями прочтений fastq и сроку с качеством эти прочтений, задать интервал GC состава (в процентах), интервал длины и пороговое значение качества по шкале phred33. На выходе вторая утилита возвращать аналогичный словарь, состоящий только из тех сиквенсов, которые удовлетвопмли всем условиям:
+2. Also, the main script bioinfo_joint contains a utility for selecting sequences from a FASTA file by length, CG composition and quality of reads. The input should be the path to the file, the name of the input file, the name of the output file, set the GC composition interval (in percent), the length interval and the quality threshold on the phred33 scale. At the output, the second utility returns a similar FASTA file consisting only of those sequences that satisfy all conditions in a newly made  `filtered` folder created in the working directory. 
+
+Here is an example of the input synthax:
+filter_fasta(
+    'C:\\Users\\Елена\\Downloads\\Python\\HW5',
+    'example_fastq.fastq', "output_fastq.txt",
+    (0, 50),
+    (0, 30), 0)
 </br></br>
 
+2. Finally, the project contains `bio_files_processor` module, which helps to convert multiline FASTA to one line sequences and calls best fits from BLAST results. These modules receive path to working directory, input and output file names as follows:
+convert_multiline_fasta_to_oneline(
+    'C:\\Users\\Елена\\Downloads\\Python\\HW5',
+    'example_multiline_fasta.fasta',
+    'output_oneline_fasta.txt')
 
-## Кому может быть полезен этот проект
 
-Проект может быть полезен молекулярным биологам для планирования кспериментов in silico, в частности, при работе с последовательносяти ДНК и РНК для создания праймеров и предсказания транскриптов. Также пакет может быть использован для фильтрации данных, полученных с помощью технологий полногеномного секвинирования.
+## Who might benefit from the project?
 
-## Кому может быть полезен этот проект
+The project can be useful for molecular biologists to plan in silico experiments, in particular, when working with DNA and RNA sequences to create primers and predict transcripts. The package can also be used to filter data obtained using whole-genome sequencing technologies.
 
-Чтобы начать работать с проектом необходимо импортировать главный модуль bioinfo_joint и использовать его целиком или отдельные функции из модуля для обработки своих данных. Кроме основных функций `run_dna_rna_tools` и `filter_fastq` следует отметить еще несколько полезных функций проекта, которые можно использовать, как самостоятельные, :
+## How to start off with the project?
+
+To start working with the project, you need to import the main module bioinfo_joint and use it entirely or individual functions from the module to process your data. In addition to the main functions `run_dna_rna_tools` and `filter_fasta` it is worth noting several more useful functions of the project that can be used independently:
 `translate`
 `reverse`
 `complement`
@@ -26,9 +39,9 @@
 `qc_calc`
 `gc_cont`.
 
-## Помощь и обратная связь по проекту
-Чтобы обратиться за помощью по проекту, можно связаться напрямую с автором проекта по электронной почте elena.n.kozhevnikova@gmail.com или можно написать в репозитории в Issue Tracker и оставить свой вопрос. На него с радостью ответит очень милая девушка :information_desk_person:
+## Help and feedback on the project
+To ask for help on the project, you can contact the author of the project directly by email elena.n.kozhevnikova@gmail.com or you can write in the repository in the Issue Tracker and leave your question. A very nice girl will be happy to answer it :information_desk_person:
 
 
-## Авторство и вклад в проект
-Проект создан Elena-Kozhevnikova (https://github.com/Elena-Kozhevnikova) на основе учебной практики в Институте Биоинформатики :heartpulse: с помощью и поддержкой команды института и особенно Nikita Vaulin (https://github.com/nvaulin).
+## Authorship and impact into project
+The project was created by Elena-Kozhevnikova (https://github.com/Elena-Kozhevnikova) based on educational practice at the Institute of Bioinformatics :heartpulse: with the help and support of the institute team and especially Nikita Vaulin (https://github.com/nvaulin).
