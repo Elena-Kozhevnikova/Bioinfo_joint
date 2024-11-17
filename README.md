@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # HW №5
 ### bioinfo_joint represents a functional pipeline to manipilate DNA nad RNA sequences, and filters FASTA files and return filtered data as new files. 
 
@@ -45,3 +46,6 @@ To ask for help on the project, you can contact the author of the project direct
 
 ## Authorship and impact into project
 The project was created by Elena-Kozhevnikova (https://github.com/Elena-Kozhevnikova) based on educational practice at the Institute of Bioinformatics :heartpulse: with the help and support of the institute team and especially Nikita Vaulin (https://github.com/nvaulin).
+=======
+
+>>>>>>> main
