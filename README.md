@@ -1,51 +1,95 @@
-<<<<<<< HEAD
-# HW №5
-### bioinfo_joint represents a functional pipeline to manipilate DNA nad RNA sequences, and filters FASTA files and return filtered data as new files. 
 
+# HW №15
 
-Пайплайн содержит биоинформатические утилиты, которые позволяют транслировать, транскрибировать, обращать и обратно транскрибировать последовательности ДНК, а также фильтровать наборы последовательностей ДНК по GC-составу, качеству прочтений и длине.
+### bioinfo_joint представляет собой функциональный пайплайн для обработки последовательностей ДНК и РНК, который фильтрует файлы формата FASTA и сохраняет отфильтрованные данные в новые файлы.
 
-## Project offers
+Пайплайн содержит биоинформатические утилиты, которые позволяют транслировать, транскрибировать, обрабатывать и обратно транскрибировать последовательности ДНК, а также фильтровать наборы последовательностей ДНК по составу GC, качеству прочтений и длине.
 
-1. The main script bioinfo_joint contains a utility for performing operations on DNA and RNA. The utility accepts as input a sequence consisting of a sequence of amino acids, containing in the last position a command-operation that must be sequentially applied to nucleic acids. Operations include `translation` (translation), `transcription` (transcription), `complementation` (complementary sequence), `reverse complement` (reverse complementary sequence). In response to constant actions not related to DNA or RNA, 0 is output. :exclamation: `run_dna_rna_tools` is functional, but currently under improvement. I am working on it given your feedback! :exclamation:
+## Проект предлагает
 
-2. Also, the main script bioinfo_joint contains a utility for selecting sequences from a FASTA file by length, CG composition and quality of reads. The input should be the path to the file, the name of the input file, the name of the output file, set the GC composition interval (in percent), the length interval and the quality threshold on the phred33 scale. At the output, the second utility returns a similar FASTA file consisting only of those sequences that satisfy all conditions in a newly made  `filtered` folder created in the working directory. 
+1. Основной скрипт `bioinfo_joint` содержит утилиту для выполнения операций на ДНК и РНК. Утилита принимает на вход последовательность, представляющую собой последовательность аминокислот, содержащую в последней позиции команду операции, которая должна быть последовательно применена к нуклеиновым кислотам. Операции включают:
+   - `translation` (трансляция),
+   - `transcription` (транскрипция),
+   - `complementation` (комплементарная последовательность),
+   - `reverse complement` (реверсивная комплементарная последовательность).
 
-Here is an example of the input synthax:
-filter_fasta(
-    'C:\\Users\\Елена\\Downloads\\Python\\HW5',
-    'example_fastq.fastq', "output_fastq.txt",
-    (0, 50),
-    (0, 30), 0)
-</br></br>
+2. Также основной скрипт `bioinfo_joint` содержит утилиту для выбора последовательностей из файла FASTA по длине, составу CG и качеству прочтений. На вход должно быть подано:
+   - путь к файлу,
+   - имя входного файла,
+   - имя выходного файла,
+   - установить интервал состава GC (в процентах),
+   - интервал длины и порог качества по шкале Phred33.
 
-2. Finally, the project contains `bio_files_processor` module, which helps to convert multiline FASTA to one line sequences and calls best fits from BLAST results. These modules receive path to working directory, input and output file names as follows:
-convert_multiline_fasta_to_oneline(
-    'C:\\Users\\Елена\\Downloads\\Python\\HW5',
-    'example_multiline_fasta.fasta',
-    'output_oneline_fasta.txt')
+   На выходе вторая утилита возвращает аналогичный файл FASTA, состоящий только из тех последовательностей, которые удовлетворяют всем условиям, в новой созданной папке `filtered`, расположенной в рабочем каталоге.
 
+3. Наконец, проект содержит модуль `bio_files_processor`, который помогает преобразовывать многострочный FASTA в однострочные последовательности и извлекать наиболее подходящие результаты из BLAST. Эти модули принимают путь к рабочему каталогу, имена входного и выходного файлов, представленные следующим образом:
 
-## Who might benefit from the project?
+   ```python
+   convert_multiline_fasta_to_oneline(
+       'C:\\Users\\Елена\\Downloads\\Python\\HW5',
+       'example_multiline_fasta.fasta',
+       'output_oneline_fasta.txt')
+   ```
 
-The project can be useful for molecular biologists to plan in silico experiments, in particular, when working with DNA and RNA sequences to create primers and predict transcripts. The package can also be used to filter data obtained using whole-genome sequencing technologies.
+## Кто может извлечь выгоду из проекта?
 
-## How to start off with the project?
+Проект может быть полезен молекулярным биологам для планирования in silico экспериментов, в частности, при работе с последовательностями ДНК и РНК для создания праймеров и прогнозирования транскриптов. Пакет также можно использовать для фильтрации данных, полученных с помощью технологий секвенирования всего генома.
 
-To start working with the project, you need to import the main module bioinfo_joint and use it entirely or individual functions from the module to process your data. In addition to the main functions `run_dna_rna_tools` and `filter_fasta` it is worth noting several more useful functions of the project that can be used independently:
-`translate`
-`reverse`
-`complement`
-`reverse_complement`
-`qc_calc`
-`gc_cont`.
+## Как начать работу с проектом?
 
-## Help and feedback on the project
-To ask for help on the project, you can contact the author of the project directly by email elena.n.kozhevnikova@gmail.com or you can write in the repository in the Issue Tracker and leave your question. A very nice girl will be happy to answer it :information_desk_person:
+Чтобы начать работу с проектом, вам необходимо импортировать главный модуль `bioinfo_joint` и использовать его целиком или отдельные функции из модуля для обработки ваших данных. В дополнение к основным функциям `run_dna_rna_tools` и `filter_fastq`, стоит отметить несколько других полезных функций проекта, которые можно использовать независимо:
+- `translate`
+- `reverse`
+- `complement`
+- `reverse_complement`
+- `qc_calc`
+- `gc_cont`
 
+## Помощь и обратная связь по проекту
 
-## Authorship and impact into project
-The project was created by Elena-Kozhevnikova (https://github.com/Elena-Kozhevnikova) based on educational practice at the Institute of Bioinformatics :heartpulse: with the help and support of the institute team and especially Nikita Vaulin (https://github.com/nvaulin).
-=======
+Чтобы получить помощь по проекту, вы можете обратиться к автору проекта напрямую по электронной почте elena.n.kozhevnikova@gmail.com или написать в репозиторий в Issue Tracker и оставить свой вопрос. Очень хорошая девушка с радостью на него ответит. :information_desk_person:
 
->>>>>>> main
+## Авторство и влияние на проект
+
+Проект был создан Еленой Кожевниковой (https://github.com/Elena-Kozhevnikova) на основе учебной практики в Институте биоинформатики :heartpulse: с помощью и поддержкой команды института, особенно Никиты Ваутина (https://github.com/nvaulin).
+```
+
+### Примеры использования
+
+# Пример для аминокислотной последовательности
+try:
+    amino_acid_sequence = BiologicalSequence("ACDEFGHIKLMNPQRSTVWY")
+    print(amino_acid_sequence.info(0, 2))
+    print(amino_acid_sequence.bioinfo())
+    
+except ValueError as e:
+    print(e)    
+
+# Пример для ДНК последовательности
+try:
+    biological_sequence_dna = BiologicalSequence("ATGC")
+    print(biological_sequence_dna.info(0, 2))
+    print(biological_sequence_dna.bioinfo())
+
+except ValueError as e:
+    print(e)
+
+# Пример для РНК последовательности
+try:
+    biological_sequence_rna = BiologicalSequence("AUGCUUCCUAA")
+    print(biological_sequence_rna.info(0, 2))
+    print(biological_sequence_rna.bioinfo())
+
+except ValueError as e:
+    print(e)
+
+# Пример использования фильтратора .fastq
+path = "/home/lena/Python/HW15"
+filter_fastq(
+    path_to_directory=path,
+    input_filename="example_fastq.fastq",
+    output_filename="filtered_output.txt",
+    gc_bounds=(30, 70),
+    length_bounds=(10, 2000),
+    quality_threshold=20
+)
